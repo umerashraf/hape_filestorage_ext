@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="storage_backend_view_form_inherit">
+        <field name="name">storage.backend.inherit</field>
+        <field name="model">storage.backend</field>
+        <field name="inherit_id" ref="storage_backend.storage_backend_view_form" />
+        <field name="priority" eval="5"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='backend_type']" position="after">
+                <field name="res_model"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

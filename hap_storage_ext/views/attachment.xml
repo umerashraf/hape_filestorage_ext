@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+  
+  	<record id="action_attachment_blacklist" model="ir.actions.act_window">
+      <field name="name">Extensions</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">attachment.upload.rule</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+    <menuitem name="Extensions" id="blacklist_base_menu" />
+	  <menuitem id="att_blacklist_menu" name="Extensions Rules" action="action_attachment_blacklist" parent="blacklist_base_menu" sequence="10"/>
+    
+    
+    <record id="blacklist_attachment_tree" model="ir.ui.view">
+        <field name="name">Extensions</field>
+        <field name="model">attachment.upload.rule</field>
+        <field name="arch" type="xml">
+          <tree string="Blacklist">
+          	<field name="sequence" widget="handle"/>
+            <field name="name" string="Rule Name"/>
+            <field name="models" widget="many2many_tags"/>
+            <field name="blacklist"/>
+            <field name="whitelist"/>
+          </tree>
+        </field>
+    </record>
+    
+    
+    <record id="blacklist_attachment_form" model="ir.ui.view">
+        <field name="name">Extension Record</field>
+        <field name="model">attachment.upload.rule</field>
+        <field name="arch" type="xml">
+          <form string="Blacklist">
+            <sheet>
+              
+              <group >
+              	<field name="name" string="Rule Name"/>
+                <field name="models" widget="many2many_tags"/>
+                <field name="blacklist" />
+                <field name="whitelist" />
+              </group>
+              
+            </sheet>
+          </form>
+        </field>
+    </record>
+
+</odoo>
+
+
+  
+  

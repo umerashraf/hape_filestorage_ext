@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_attachment_form_inherit_hap">
+        <field name="name">ir.attachment form.inherit.hap</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="base.view_attachment_form" />
+        <field name="priority" eval="5"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='mimetype']" position="after">
+                <field name="file_type" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
