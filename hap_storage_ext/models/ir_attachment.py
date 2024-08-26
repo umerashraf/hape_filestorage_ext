@@ -7,8 +7,9 @@ class AttachmentType(models.Model):
     name  = fields.Char(string="Name", required=True)
 
 class IrAttachment(models.Model):
-    _inherit  = "ir.attachment"
-    file_type = fields.Many2one('ir.attachment.type',string="File Type", required=True)
+    _inherit    = "ir.attachment"
+    file_type   = fields.Many2one('ir.attachment.type',string="File Type", required=True)
+    storage     = fields.Many2one('storage.file',string="Storage", required=False)
     
     @api.model_create_multi
     def create(self, vals_list):
@@ -31,8 +32,14 @@ class IrAttachment(models.Model):
                     "res_model"         :attachment.res_model,
                     "res_id"            :attachment.res_id,
                     "res_name"          :attachment.res_name,
-                    "index_content"     :attachment.index_content
+                    "index_content"     :attachment.index_content,
+                    "storage"           :file.id
                 })
                 attachment.unlink()
                 return new_attachment
         return attachment
+
+    def unlink(self):
+        if self.storage and self.storage.id:
+            self.storage.write({"to_delete":True})
+        return super().unlink()

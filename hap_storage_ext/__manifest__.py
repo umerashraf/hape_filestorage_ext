@@ -18,7 +18,7 @@
         "views/res_config_settings_views.xml",
         'views/attachment.xml',
         'views/storage_backend.xml',
-        'views/sale_order.xml',
+        'views/sale_order_views.xml',
         'views/ir_attachment_views.xml'
     ],
     "assets": {

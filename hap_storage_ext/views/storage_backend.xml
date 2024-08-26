@@ -11,4 +11,15 @@
             </xpath>
         </field>
     </record>
+    <record model="ir.ui.view" id="storage_file_view_form_inherit">
+        <field name="name">storage.file.inherit</field>
+        <field name="model">storage.file</field>
+        <field name="inherit_id" ref="storage_file.storage_file_view_form" />
+        <field name="priority" eval="5"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='url']" position="after">
+                <field name="to_delete"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>
